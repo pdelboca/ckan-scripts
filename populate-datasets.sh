@@ -9,9 +9,8 @@ RESOURCE_DATA=""
 
 for i in {1..5}; do
   echo "Creating dataset $i"
-  curl -X POST -H "Authorization: $API_TOKEN" -d "name=api-package-$i"$PACKAGE_DATA "http://localhost:5000/api/action/package_create"
+  curl -X POST -H "Authorization: $API_TOKEN" -d "name=api-package-$i"$PACKAGE_DATA "http://localhost:5000/api/action/package_create"  > /dev/null 2>&1
   for j in {1..3}; do
-    curl -H "Authorization: $API_TOKEN" -d "package_id=api-package-$i"$RESOURCE_DATA "http://localhost:5000/api/action/resource_create"
+    curl -H "Authorization: $API_TOKEN" -d "package_id=api-package-$i"$RESOURCE_DATA "http://localhost:5000/api/action/resource_create"  > /dev/null 2>&1
   done
-  echo "Finished dataset $i"
 done
