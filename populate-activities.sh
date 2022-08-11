@@ -5,6 +5,7 @@
 
 
 for i in {1..10}; do
+  echo "Creating dataset $i"
   curl -X POST -H "Authorization: $API_TOKEN" -d "name=api-package-$i" "http://localhost:5000/api/action/package_create" > /dev/null 2>&1
   for j in {1..10000}; do
     curl -H "Authorization: $API_TOKEN" -d "notes=Update from API:$j&id=api-package-$i" "http://localhost:5000/api/action/package_update" > /dev/null 2>&1
